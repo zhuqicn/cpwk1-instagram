@@ -47,6 +47,10 @@ public class PhotoActivity extends AppCompatActivity {
               photo.caption = photoJson.getJSONObject("caption").getString("text");
             }
             photo.imageUrl = photoJson.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
+            photo.likesCount = photoJson.getJSONObject("likes").getInt("count");
+            photo.userName = photoJson.getJSONObject("user").getString("username");
+            photo.profileUrl = photoJson.getJSONObject("user").getString("profile_picture");
+            photo.publishTime = photoJson.getInt("created_time");
             photos.add(photo);
           }
         } catch (JSONException e) {
