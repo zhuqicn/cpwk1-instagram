@@ -1,6 +1,7 @@
 package com.codepath.cpw1instagram;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,21 @@ import com.squareup.picasso.Transformation;
 
 import java.util.Date;
 import java.util.List;
+
+class CropSquareTransformation implements Transformation {
+  @Override public Bitmap transform(Bitmap source) {
+    int size = Math.min(source.getWidth(), source.getHeight());
+    int x = (source.getWidth() - size) / 2;
+    int y = (source.getHeight() - size) / 2;
+    Bitmap result = Bitmap.createBitmap(source, x, y, size, size);
+    if (result != source) {
+      source.recycle();
+    }
+    return result;
+  }
+
+  @Override public String key() { return "square()"; }
+}
 
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
   public InstagramPhotosAdapter(Context context, List<InstagramPhoto> objects) {
@@ -37,7 +53,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     TextView tvLikeCount = (TextView)convertView.findViewById(R.id.tvLikeCount);
     ImageView ivPhoto = (ImageView)convertView.findViewById(R.id.ivPhoto);
     ImageView ivProfile = (ImageView)convertView.findViewById(R.id.ivProfile);
-    TextView tvComment1 = (TextView)convertView.findViewById(R.id.tvComment1);
+    TextView tvComment1 = (TextView) convertView.findViewById(R.id.tvComment1);
     TextView tvComment2 = (TextView)convertView.findViewById(R.id.tvComment2);
 
     ivPhoto.setImageResource(0);
@@ -48,8 +64,15 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     tvTime.setText(getRelativeTime(photo.publishTime));
     tvLikeCount.setText("" + photo.likesCount);
 
-    // Get Instagram pic and profile pic.
-    Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
+    // Get Instagram pic.
+    Picasso
+      .with(getContext())
+      .load(photo.imageUrl)
+      .placeholder(R.drawable.placeholder)
+      .transform(new CropSquareTransformation())
+      .into(ivPhoto);
+
+    // Transformation to make profile pic as circle.
     Transformation transformation = new RoundedTransformationBuilder()
       .borderColor(Color.WHITE)
       .borderWidthDp(1)
