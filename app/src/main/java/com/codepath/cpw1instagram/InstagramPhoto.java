@@ -1,5 +1,7 @@
 package com.codepath.cpw1instagram;
 
+import java.util.ArrayList;
+
 public class InstagramPhoto {
   public String caption;
   public String imageUrl;
@@ -7,4 +9,10 @@ public class InstagramPhoto {
   public String profileUrl;
   public int publishTime;
   public int likesCount;
+  public int commentCount;
+  public ArrayList<Comment> comments;
+
+  public InstagramPhoto() {
+    comments = new ArrayList<>();
+  }
 }

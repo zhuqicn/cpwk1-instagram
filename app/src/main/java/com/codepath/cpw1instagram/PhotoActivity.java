@@ -70,6 +70,20 @@ public class PhotoActivity extends AppCompatActivity {
             photo.userName = photoJson.getJSONObject("user").getString("username");
             photo.profileUrl = photoJson.getJSONObject("user").getString("profile_picture");
             photo.publishTime = photoJson.getInt("created_time");
+            photo.comments = new ArrayList<Comment>();
+            JSONObject commentsObj = photoJson.getJSONObject("comments");
+            photo.commentCount = commentsObj.getInt("count");
+            JSONArray allComments = commentsObj.getJSONArray("data");
+            for (int j = 0; j < allComments.length(); j++) {
+              JSONObject commentObj = allComments.getJSONObject(j);
+              Comment comment = new Comment();
+              comment.createdTime = commentObj.getInt("created_time");
+              comment.text = commentObj.getString("text");
+              JSONObject from = commentObj.getJSONObject("from");
+              comment.profileUrl = from.getString("profile_picture");
+              comment.userName = from.getString("username");
+              photo.comments.add(comment);
+            }
             photos.add(photo);
           }
           swipeContainer.setRefreshing(false);

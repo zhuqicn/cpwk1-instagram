@@ -20,6 +20,10 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
+
+
+
+
     InstagramPhoto photo = getItem(position);
     if (convertView == null) {
       convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_photo, parent, false);
@@ -30,6 +34,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     TextView tvLikeCount = (TextView)convertView.findViewById(R.id.tvLikeCount);
     ImageView ivPhoto = (ImageView)convertView.findViewById(R.id.ivPhoto);
     ImageView ivProfile = (ImageView)convertView.findViewById(R.id.ivProfile);
+    TextView tvComment1 = (TextView)convertView.findViewById(R.id.tvComment1);
+    TextView tvComment2 = (TextView)convertView.findViewById(R.id.tvComment2);
 
     ivPhoto.setImageResource(0);
     ivProfile.setImageResource(0);
@@ -39,9 +45,24 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     tvTime.setText(getRelativeTime(photo.publishTime));
     tvLikeCount.setText("" + photo.likesCount);
 
+    // Get Instagram pic and profile pic.
     Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
     Picasso.with(getContext()).load(photo.profileUrl).into(ivProfile);
 
+    if (photo.comments.size() > 0) {
+      tvComment1.setVisibility(View.VISIBLE);
+      Comment c = photo.comments.get(0);
+      tvComment1.setText(c.shortLine());
+    } else {
+      tvComment1.setVisibility(View.GONE);
+    }
+    if (photo.comments.size() > 1) {
+      tvComment2.setVisibility(View.VISIBLE);
+      Comment c = photo.comments.get(1);
+      tvComment2.setText(c.shortLine());
+    } else {
+      tvComment2.setVisibility(View.GONE);
+    }
     return convertView;
   }
 

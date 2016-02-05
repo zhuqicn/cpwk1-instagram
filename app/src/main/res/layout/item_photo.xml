@@ -106,4 +106,27 @@
             android:layout_toEndOf="@+id/ivLike"
             android:layout_marginLeft="10dp"/>
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comment1"
+        android:id="@+id/tvComment1"
+        android:layout_below="@+id/tvCaption"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:maxLines="3"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comment2"
+        android:id="@+id/tvComment2"
+        android:layout_below="@+id/tvComment1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:ellipsize="end"
+        android:maxLines="3"/>
+
 </RelativeLayout>
