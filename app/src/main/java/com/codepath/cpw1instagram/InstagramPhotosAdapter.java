@@ -1,6 +1,7 @@
 package com.codepath.cpw1instagram;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.Date;
 import java.util.List;
@@ -47,7 +50,13 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
 
     // Get Instagram pic and profile pic.
     Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
-    Picasso.with(getContext()).load(photo.profileUrl).into(ivProfile);
+    Transformation transformation = new RoundedTransformationBuilder()
+      .borderColor(Color.WHITE)
+      .borderWidthDp(1)
+      .cornerRadiusDp(25)
+      .oval(false)
+      .build();
+    Picasso.with(getContext()).load(photo.profileUrl).fit().transform(transformation).into(ivProfile);
 
     if (photo.comments.size() > 0) {
       tvComment1.setVisibility(View.VISIBLE);
