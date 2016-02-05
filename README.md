@@ -2,7 +2,7 @@
 
 **Popular Photos** is an android app that allows a user to check out popular photos from Instagram. The app utilizes Instagram API to display images and basic image information to the user.
 
-Time spent: **6** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -20,7 +20,7 @@ The following **optional** features are implemented:
 * [x] Display each photo with the same style and proportions as the real Instagram
 * [x] Display each user profile image using a RoundedImageViewDisplay each user profile image using a [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)
 * [x] Display a nice default placeholder graphic for each image during loading
-* [ ] Improved the user interface through styling and coloring
+* [x] Improved the user interface through styling and coloring
 
 The following **bonus** features are implemented:
 
@@ -36,7 +36,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-TBD
+![popularphoto](https://cloud.githubusercontent.com/assets/6313395/12842169/cbbd58b6-cba5-11e5-86b4-b621e8d896cb.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

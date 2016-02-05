@@ -59,7 +59,12 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     ivPhoto.setImageResource(0);
     ivProfile.setImageResource(0);
 
-    tvCaption.setText(photo.caption);
+    if (photo.caption.isEmpty()) {
+      tvCaption.setVisibility(View.GONE);
+    } else {
+      tvCaption.setVisibility(View.VISIBLE);
+      tvCaption.setText(photo.caption);
+    }
     tvUserName.setText(photo.userName);
     tvTime.setText(getRelativeTime(photo.publishTime));
     tvLikeCount.setText("" + photo.likesCount);
