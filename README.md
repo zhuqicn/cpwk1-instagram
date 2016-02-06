@@ -2,7 +2,7 @@
 
 **Popular Photos** is an android app that allows a user to check out popular photos from Instagram. The app utilizes Instagram API to display images and basic image information to the user.
 
-Time spent: **8** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -26,7 +26,7 @@ The following **bonus** features are implemented:
 
 * [x] Show last 2 comments for each photo
 * [ ] Allow user to view all comments for an image within a separate activity or dialog fragment
-* [ ] Allow video posts to be played in full-screen using the VideoView
+* [x] Allow video posts to be played in full-screen using the VideoView
 
 The following **additional** features are implemented:
 

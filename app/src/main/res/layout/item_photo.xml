@@ -4,17 +4,6 @@
                 android:layout_height="match_parent"
                 android:paddingBottom="10dp">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ivPhoto"
-        android:minHeight="50dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -34,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/loBanner"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
@@ -83,7 +72,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/ivPhoto"
+        android:layout_below="@+id/loImageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/loLikeCount"
@@ -109,6 +98,27 @@
             android:layout_toRightOf="@+id/ivLike"
             android:layout_toEndOf="@+id/ivLike"
             android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/ivComment"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tvLikeCount"
+            android:layout_toEndOf="@+id/tvLikeCount"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/comment"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="888"
+            android:id="@+id/tvCommentCount"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivComment"
+            android:layout_toEndOf="@+id/ivComment"
+            android:layout_marginLeft="10dp"/>
     </RelativeLayout>
 
     <TextView
@@ -132,5 +142,34 @@
         android:layout_alignParentStart="true"
         android:ellipsize="end"
         android:maxLines="3"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loBanner"
+        android:id="@+id/loImageView">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivPhoto"
+            android:minHeight="200dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <ImageButton
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:id="@+id/ibPlay"
+            android:src="@drawable/player"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="#00ffffff"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

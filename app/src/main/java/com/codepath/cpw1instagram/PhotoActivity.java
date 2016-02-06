@@ -70,6 +70,16 @@ public class PhotoActivity extends AppCompatActivity {
             photo.userName = photoJson.getJSONObject("user").getString("username");
             photo.profileUrl = photoJson.getJSONObject("user").getString("profile_picture");
             photo.publishTime = photoJson.getInt("created_time");
+            // Get video info.
+            String type = photoJson.getString("type");
+            if (type.equals("video")) {
+              photo.isVideo = true;
+              photo.videoUrl = photoJson.getJSONObject("videos").getJSONObject("standard_resolution").getString("url");
+            } else {
+              photo.isVideo = false;
+              photo.videoUrl = null;
+            }
+            // Get all comments.
             photo.comments = new ArrayList<Comment>();
             JSONObject commentsObj = photoJson.getJSONObject("comments");
             photo.commentCount = commentsObj.getInt("count");

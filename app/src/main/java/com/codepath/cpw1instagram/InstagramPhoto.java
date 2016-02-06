@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class InstagramPhoto {
   public String caption;
   public String imageUrl;
+  public String videoUrl;
+  public boolean isVideo;
   public String userName;
   public String profileUrl;
   public int publishTime;

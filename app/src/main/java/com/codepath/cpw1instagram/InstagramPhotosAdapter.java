@@ -1,12 +1,14 @@
 package com.codepath.cpw1instagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,9 +42,6 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
 
-
-
-
     InstagramPhoto photo = getItem(position);
     if (convertView == null) {
       convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_photo, parent, false);
@@ -51,11 +50,14 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     TextView tvUserName = (TextView)convertView.findViewById(R.id.tvUserName);
     TextView tvTime = (TextView)convertView.findViewById(R.id.tvTime);
     TextView tvLikeCount = (TextView)convertView.findViewById(R.id.tvLikeCount);
+    TextView tvCommentCount = (TextView)convertView.findViewById(R.id.tvCommentCount);
     ImageView ivPhoto = (ImageView)convertView.findViewById(R.id.ivPhoto);
     ImageView ivProfile = (ImageView)convertView.findViewById(R.id.ivProfile);
+    ImageButton ibPlay = (ImageButton)convertView.findViewById(R.id.ibPlay);
     TextView tvComment1 = (TextView) convertView.findViewById(R.id.tvComment1);
     TextView tvComment2 = (TextView)convertView.findViewById(R.id.tvComment2);
 
+    ibPlay.setVisibility(View.INVISIBLE);
     ivPhoto.setImageResource(0);
     ivProfile.setImageResource(0);
 
@@ -68,6 +70,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     tvUserName.setText(photo.userName);
     tvTime.setText(getRelativeTime(photo.publishTime));
     tvLikeCount.setText("" + photo.likesCount);
+    tvCommentCount.setText("" + photo.commentCount);
 
     // Get Instagram pic.
     Picasso
@@ -99,6 +102,19 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
       tvComment2.setText(c.shortLine());
     } else {
       tvComment2.setVisibility(View.GONE);
+    }
+
+    if (photo.isVideo) {
+      ibPlay.setVisibility(View.VISIBLE);
+      final String videoUrl = photo.videoUrl;
+      ibPlay.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Intent myIntent = new Intent(getContext(), VideoViewActivity.class);
+          myIntent.putExtra("video_url", videoUrl);
+          getContext().startActivity(myIntent);
+        }
+      });
     }
     return convertView;
   }
