@@ -3,6 +3,7 @@ package com.codepath.cpw1instagram;
 import java.util.ArrayList;
 
 public class InstagramPhoto {
+  public String id;
   public String caption;
   public String imageUrl;
   public String videoUrl;

@@ -2,7 +2,7 @@
 
 **Popular Photos** is an android app that allows a user to check out popular photos from Instagram. The app utilizes Instagram API to display images and basic image information to the user.
 
-Time spent: **10** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -25,18 +25,22 @@ The following **optional** features are implemented:
 The following **bonus** features are implemented:
 
 * [x] Show last 2 comments for each photo
-* [ ] Allow user to view all comments for an image within a separate activity or dialog fragment
+* [x] Allow user to view all comments for an image within a separate activity or dialog fragment
 * [x] Allow video posts to be played in full-screen using the VideoView
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [x] List anything else that you can get done to improve the app functionality!
+* PhotosActivity: Show a loading animation when loading everything.
+* CommentsActivity: Show more info about comments. Such as user's profile, time of comments.
+* CommentsActivity: Show a loading animation when loading the comments.
+* Use the navigation bar, set the text when Activity changed, and add a back button.
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-![popularphoto](https://cloud.githubusercontent.com/assets/6313395/12842169/cbbd58b6-cba5-11e5-86b4-b621e8d896cb.gif)
+![walk_through](https://github.com/zhuqicn/cpwk1-instagram/blob/master/walk_through.gif?raw=true)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

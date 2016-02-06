@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class PhotoActivity extends AppCompatActivity {
-  private static final String CLIENT_ID = "e05c462ebd86446ea48a5af73769b602";
+  public static final String CLIENT_ID = "e05c462ebd86446ea48a5af73769b602";
   private ArrayList<InstagramPhoto> photos;
   private InstagramPhotosAdapter aPhotos;
   private SwipeRefreshLayout swipeContainer;
@@ -61,6 +61,7 @@ public class PhotoActivity extends AppCompatActivity {
           for (int i = 0; i < photosJson.length(); i++) {
             JSONObject photoJson = photosJson.getJSONObject(i);
             InstagramPhoto photo = new InstagramPhoto();
+            photo.id = photoJson.getString("id");
             photo.caption = "";
             if (photoJson.has("caption") && !photoJson.isNull("caption")) {
               photo.caption = photoJson.getJSONObject("caption").getString("text");

@@ -56,6 +56,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
     ImageButton ibPlay = (ImageButton)convertView.findViewById(R.id.ibPlay);
     TextView tvComment1 = (TextView) convertView.findViewById(R.id.tvComment1);
     TextView tvComment2 = (TextView)convertView.findViewById(R.id.tvComment2);
+    TextView tvAllComments = (TextView)convertView.findViewById(R.id.tvViewAllComments);
 
     ibPlay.setVisibility(View.INVISIBLE);
     ivPhoto.setImageResource(0);
@@ -102,6 +103,21 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
       tvComment2.setText(c.shortLine());
     } else {
       tvComment2.setVisibility(View.GONE);
+    }
+    if (photo.commentCount > 2) {
+      tvAllComments.setText("View all " + photo.commentCount + " comments");
+      tvAllComments.setVisibility(View.VISIBLE);
+      final String id = photo.id;
+      tvAllComments.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Intent i = new Intent(getContext(), CommentsActivity.class);
+          i.putExtra("post_id", id);
+          getContext().startActivity(i);
+        }
+      });
+    } else {
+      tvAllComments.setVisibility(View.INVISIBLE);
     }
 
     if (photo.isVideo) {
